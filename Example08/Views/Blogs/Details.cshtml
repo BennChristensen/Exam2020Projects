@@ -1,0 +1,43 @@
+﻿@model Example08.Models.Blog
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Blog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                Overskrift
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Posts)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Headline, "Index", "Post", new { id = item.Id }, new { @class = "post" })
+                </td>
+            </tr>
+        }
+
+        <p>
+            @Html.ActionLink("Opret ny blogpost", "Create", "Post", new { id = Model.Id }, new { @class = "link" })
+        </p>
+    </table>
+</div>
+
